@@ -1,6 +1,6 @@
 @Airline.API_HostAddress = http://localhost:5000
 
-GET {{Airline.API_HostAddress}}/weatherforecast/
+GET {{Airline.API_HostAddress}}/Booking/
 Accept: application/json
 
 ###
