@@ -27,7 +27,7 @@ namespace Airline.API.Controllers
         public async Task<IActionResult> CancelTicket(int id)
         {
             await _bookingService.CancelBookingAsync(id);
-            return Ok("Booking Cancelled");
+            return Ok("Booking Cancelled sucessfully");
         }
 
     }
