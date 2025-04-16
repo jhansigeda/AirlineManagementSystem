@@ -23,6 +23,9 @@ builder.Services.AddDbContext<AirlineDbContext>(options =>
 
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IRepository<Booking>, BookingRepository>();
+builder.Services.AddScoped<IRepository<Flight>, FlightRepository>();
+
+
 
 var app = builder.Build();
 

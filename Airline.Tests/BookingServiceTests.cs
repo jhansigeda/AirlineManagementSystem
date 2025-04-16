@@ -39,7 +39,7 @@ namespace Airline.Tests
             await _bookingService.CancelBookingAsync(1);
 
             Assert.IsTrue(booking.IsCancelled);
-            _mockRepo.Verify(r => r.Update(booking), Times.Once);
+            _mockRepo.Verify(r => r.UpdateAsync(booking), Times.Once);
             _mockRepo.Verify(r => r.SaveAsync(), Times.Once);
         }
     }

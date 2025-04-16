@@ -1,6 +1,6 @@
 ﻿namespace Airline.Domain
 {
-    public abstract class Flight
+    public class Flight
     {
         public int Id { get; set; }
         public string FlightNumber { get; set; }
@@ -10,6 +10,8 @@
         public double Speed { get; set; }
         public string Source { get; set; }
         public string Destination { get; set; }
+
+        public string FlightType { get; set; }
     }
 
     public class DomesticFlight : Flight { }

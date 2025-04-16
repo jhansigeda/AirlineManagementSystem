@@ -16,12 +16,23 @@ namespace Airline.Infrastructure.IServices.Services
         {
             _context = context;
         }
-
-        public async Task AddAsync(Booking entity) => await _context.Bookings.AddAsync(entity);
-        public void Delete(Booking entity) => _context.Bookings.Remove(entity);
         public async Task<IEnumerable<Booking>> GetAllAsync() => await _context.Bookings.ToListAsync();
         public async Task<Booking> GetByIdAsync(int id) => await _context.Bookings.FindAsync(id);
-        public void Update(Booking entity) => _context.Bookings.Update(entity);
+
+        public async Task  AddAsync(Booking entity) => await _context.Bookings.AddAsync(entity);
+        public async Task DeleteAsync(Booking entity) => _context.Bookings.Remove(entity);
+
+        public async Task UpdateAsync(Booking entity)
+        {
+            _context.Bookings.Where(b => b.Id == entity.Id)
+                .ExecuteUpdate(b => b
+                    .SetProperty(x => x.FlightId, entity.FlightId)
+                    .SetProperty(x => x.PassengerName, entity.PassengerName)
+                    .SetProperty(x => x.BookingDate, entity.BookingDate)
+                    .SetProperty(x => x.IsCancelled, entity.IsCancelled));
+            await _context.SaveChangesAsync();
+        }
+
         public async Task SaveAsync() => await _context.SaveChangesAsync();
     }
 }

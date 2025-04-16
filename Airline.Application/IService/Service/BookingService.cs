@@ -36,7 +36,7 @@ namespace Airline.Application.IService.Service
             var booking = await _bookingRepo.GetByIdAsync(bookingId);
             if (booking == null) throw new Exception("Booking not found");
             booking.IsCancelled = true;
-            _bookingRepo.Update(booking);
+            await _bookingRepo.UpdateAsync(booking);
             await _bookingRepo.SaveAsync();
         }
     }
